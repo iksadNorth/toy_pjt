@@ -1,0 +1,1 @@
+create database if not exists php_toy_pjt;

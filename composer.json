@@ -1,0 +1,22 @@
+{
+    "name": "root/toy_pjt",
+    "autoload": {
+        "psr-4": {
+            "Toypjt\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "iksadnorth"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^5.2"
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "require": {
+        "illuminate/database": "^10.42"
+    }
+}
