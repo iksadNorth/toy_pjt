@@ -2,67 +2,40 @@
 
 namespace Toypjt\Statics\Segments;
 
-class OctaTable
+abstract class OctaTable
 {
-    private static function get_cell_unit() {
-        return '
-            `<div class="square">${unit}</div>`
-        ';
+    private $num_col;
+
+
+    public function __construct($num_col = 8) {
+        $this->num_col = $num_col;
     }
 
-    public static function render($data)
+    abstract protected function get_cell_unit();
+    abstract protected function get_style_unit();
+    abstract protected function get_script_unit();
+
+    public function render($data)
     {
         $arr = OctaTable::arr_php_to_js($data);
         return <<<EOD
         <div class="container">
             <style>
-        EOD . OctaTable::get_style() . <<<EOD
+        EOD . $this->get_style() . <<<EOD
+        EOD . $this->get_style_unit() . <<<EOD
             </style>
 
             <table id="OctaTable"></table>
 
             <script>
-        EOD . OctaTable::get_script($arr) . <<<EOD
+        EOD . $this->get_script($arr) . <<<EOD
+        EOD . $this->get_script_unit() . <<<EOD
             </script>
         </div>
         EOD;
     }
 
-    private static function get_style_unit() {
-        return <<<EOD
-        /* 변수 정의 */
-        :root {
-            --cell-width: 100px;
-            --num-col: 8;
-            --hover-color: #3CA400;
-        }
-
-        /* unit 스타일 */
-        .square {
-            width: var(--cell-width);
-            height: var(--cell-width);
-            border: 1px solid #E4E4E4;
-            transition: border-color 0.3s;
-
-            display: flex;
-            justify-content: center; /* 가로 가운데 정렬 */
-            align-items: center; /* 세로 가운데 정렬 */
-            text-align: center; /* 텍스트 가운데 정렬 */
-
-            font-family: "Poor Story", system-ui;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        /* 마우스를 올렸을 때의 스타일 */
-        .square:hover {
-            border-color: var(--hover-color);
-            color: var(--hover-color);
-        }
-        EOD;
-    }
-
-    private static function get_style() {
+    private function get_style() {
         return <<<EOD
         /* 루트 태그 스타일 */
         .container {
@@ -86,13 +59,11 @@ class OctaTable
         
         /* 테이블 셀 스타일 */
         td {}
-
-        /* unit 스타일 */
-        EOD . OctaTable::get_style_unit();
+        EOD;
     }
 
-    private static function get_script($arr, $num_col = 8) {
-        $cell_unit = OctaTable::get_cell_unit();
+    private function get_script($arr, $num_col = 8) {
+        $cell_unit = $this->get_cell_unit();
 
         return <<<EOD
         $(document).ready(function() {
@@ -108,7 +79,7 @@ class OctaTable
                 for (var j = 0; j < $num_col; j++) {
                     var cell = $("<td></td>");
                     if (i + j < data.length) {
-                        var unit = data[i + j];
+                        var props = data[i + j];
                         cell.append($cell_unit);
                     }
                     row.append(cell);
@@ -119,7 +90,7 @@ class OctaTable
         EOD;
     }
 
-    private static function arr_php_to_js($arr) 
+    public static function arr_php_to_js($arr) 
     {
         $jsonString = json_encode($arr);
         return 'JSON.parse(\'' . $jsonString . '\')';
