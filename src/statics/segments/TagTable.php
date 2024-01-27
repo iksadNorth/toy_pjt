@@ -10,7 +10,7 @@ class TagTable extends OctaTable
 
     protected function get_cell_unit() {
         return '
-            `<div class="square">${props}</div>`
+            `<div class="square">${props.name}</div>`
         ';
     }
 

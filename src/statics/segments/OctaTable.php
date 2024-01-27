@@ -25,7 +25,7 @@ abstract class OctaTable
         EOD . $this->get_style_unit() . <<<EOD
             </style>
 
-            <table id="OctaTable"></table>
+            <div class="table" id="OctaTable"></div>
 
             <script>
         EOD . $this->get_script($arr) . <<<EOD
@@ -43,7 +43,7 @@ abstract class OctaTable
         }
 
         /* 기본 테이블 스타일 */
-        table {
+        .table {
             border-spacing: 0px;
             width: calc(var(--num-col) * var(--cell-width));
 
@@ -51,14 +51,22 @@ abstract class OctaTable
         }
         
         /* 테이블 헤더 스타일 */
-        th {
+        .th {
+            display: block;
+
             background-color: #f2f2f2;
             border: 1px solid #dddddd;
             text-align: left;
         }
         
         /* 테이블 셀 스타일 */
-        td {}
+        .td {
+            display: inline-block;
+            vertical-align: top;
+
+            width: 100px;
+            height: 100px;
+        }
         EOD;
     }
 
@@ -75,9 +83,11 @@ abstract class OctaTable
 
             // 데이터 배열을 $num_col 개씩 나누어 행을 추가
             for (var i = 0; i < data.length; i += $num_col) {
-                var row = $("<tr></tr>");
+                var row = $("<div class='tr'></div>");
+
                 for (var j = 0; j < $num_col; j++) {
-                    var cell = $("<td></td>");
+                    var cell = $("<div class='td'></div>");
+
                     if (i + j < data.length) {
                         var props = data[i + j];
                         cell.append($cell_unit);
