@@ -5,6 +5,10 @@ use Toypjt\Model\Service\TagService as TagService;
 use Toypjt\Statics\Templates\Main as Main;
 
 $tag_service = new TagService();
-$arr = $tag_service->get_tag_list();
+$arr_tag = $tag_service->get_tag_list();
 
-new Main("메인 페이지", $arr);
+$arr_week = [
+    '1', '2'
+];
+
+new Main("메인 페이지", $arr_tag, $arr_week);

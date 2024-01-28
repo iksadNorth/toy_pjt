@@ -4,8 +4,8 @@ namespace Toypjt\Statics\Segments;
 
 class TagTable extends OctaTable
 {
-    public function __construct($num_col = 8) {
-        parent::__construct($num_col);
+    public function __construct() {
+        parent::__construct(8, '100px', '100px');
     }
 
     protected function get_cell_unit() {
@@ -18,8 +18,8 @@ class TagTable extends OctaTable
         return <<<EOD
         /* 변수 정의 */
         :root {
-            --cell-width: 100px;
-            --num-col: 8;
+            --cell-width: $this->cell_width;
+            --num-col: $this->num_col;
             --hover-color: #3CA400;
         }
 
