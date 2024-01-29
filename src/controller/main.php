@@ -40,4 +40,27 @@ $arr_week = [
     ],
 ];
 
-new Main("메인 페이지", $arr_tag, $arr_week);
+$arr_writer = [
+    [
+        'profile' => 'https://img1.daumcdn.net/thumb/C120x120.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1ecC/image/cyp_n2TIurTI17MY_zpT2iI36wI',
+        'name' => '조명광',
+        'intro' => 'dttrees(디트리스), conace(코네이스) CEO, 한양사이버대학원 가톨릭대학교 겸임교수 - Everything is Marketing',
+    ],
+    [
+        'profile' => 'https://img1.daumcdn.net/thumb/C120x120.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1ecC/image/cyp_n2TIurTI17MY_zpT2iI36wI',
+        'name' => '조명광',
+        'intro' => 'dttrees(디트리스), conace(코네이스) CEO, 한양사이버대학원 가톨릭대학교 겸임교수 - Everything is Marketing',
+    ],
+    [
+        'profile' => 'https://img1.daumcdn.net/thumb/C120x120.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1ecC/image/cyp_n2TIurTI17MY_zpT2iI36wI',
+        'name' => '조명광',
+        'intro' => 'dttrees(디트리스), conace(코네이스) CEO, 한양사이버대학원 가톨릭대학교 겸임교수 - Everything is Marketing',
+    ],
+    [
+        'profile' => 'https://img1.daumcdn.net/thumb/C120x120.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/1ecC/image/cyp_n2TIurTI17MY_zpT2iI36wI',
+        'name' => '조명광',
+        'intro' => 'dttrees(디트리스), conace(코네이스) CEO, 한양사이버대학원 가톨릭대학교 겸임교수 - Everything is Marketing',
+    ],
+];
+
+new Main("메인 페이지", $arr_tag, $arr_week, $arr_writer);

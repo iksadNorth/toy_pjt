@@ -54,7 +54,7 @@ class WeekTable extends Container
             height: $this->unit_height;
 
             display: flex;
-            direction: row;
+            flex-direction: row;
             align-items: center;
         }
         #$this->table_id .tag {
