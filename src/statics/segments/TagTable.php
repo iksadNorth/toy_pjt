@@ -2,16 +2,17 @@
 
 namespace Toypjt\Statics\Segments;
 
-class TagTable extends OctaTable
+class TagTable extends Container
 {
     public function __construct() {
         parent::__construct(8, '100px', '100px');
     }
 
-    protected function get_cell_unit() {
-        return '
-            `<div class="square">${props.name}</div>`
-        ';
+    protected function get_html_unit($props) {
+        $name = $props['name'];
+        return <<<EOD
+            <div class="square">$name</div>
+        EOD;
     }
 
     protected function get_style_unit() {
